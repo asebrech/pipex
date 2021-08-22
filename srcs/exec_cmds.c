@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 10:04:12 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/19 08:26:16 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/22 10:42:07 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,16 @@ void	first_pipe(t_info *info)
 {
 	int fd;
 
-	fd = open(info->file1, O_RDONLY);
-	dup2(fd, 0);
-	close(fd);
+	if (!(ft_strncmp("here_doc", info->file1, ft_strlen(info->file1))))
+	{
+		ft_here_doc(info);
+	}
+	else
+	{
+		fd = open(info->file1, O_RDONLY);
+		dup2(fd, 0);
+		close(fd);
+	}
 	if (info->nb_arg == 1)
 		last_pipe(info);
 	else

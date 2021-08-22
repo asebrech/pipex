@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 08:19:04 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/20 11:17:14 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/22 10:46:20 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void    fill_struct(int ac, char **av, char **env, t_info *info)
 	int	i;
 
 	tmp = NULL;
-	ft_file1(ac, av, info);
+	ft_file1(av, info);
 	info->file2 = ft_strjoin("./", av[ac - 1]);
 	av[ac - 1] = NULL;
 	i = 0;

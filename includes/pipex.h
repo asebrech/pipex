@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 14:31:03 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/20 14:45:29 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/22 10:51:16 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PIPEX_H
 # include <stdio.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include "get_next_line.h"
 # include <sys/errno.h>
 # include <string.h>
@@ -39,5 +41,6 @@ void	free_struct(t_info *info);
 void	free_tab(char **tab);
 void	exec_cmds(t_info *info);
 void	ft_close_fd(t_info *info);
+void	ft_here_doc(t_info *info);
 
 #endif
