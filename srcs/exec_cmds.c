@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 10:04:12 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/22 10:42:07 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/23 11:12:07 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	first_pipe(t_info *info)
 	if (!(ft_strncmp("here_doc", info->file1, ft_strlen(info->file1))))
 	{
 		ft_here_doc(info);
+		dup2(info->one_fd[0], 0);
+		close(info->one_fd[0]);
+		close(info->one_fd[1]);
 	}
 	else
 	{
