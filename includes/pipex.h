@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 14:31:03 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/23 10:38:32 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/24 13:52:53 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_info
 {
 	int	one_fd[2];
 	int	**fd;
+	int	oui;
 	char **path;
 	int	nb_path;
 	char **args;

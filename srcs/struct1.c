@@ -6,7 +6,7 @@
 /*   By: asebrech <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 10:11:45 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/23 10:39:30 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/24 13:56:59 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,19 @@ void	ft_here_doc(t_info *info)
 	char *line;
 
 	line = NULL;
-	pipe(info->one_fd);
+	if (info->oui == 1)
+	{
+		info->one_fd[1] = open(info->file2, O_RDWR | O_CREAT, 0777);
+		dup2(info->one_fd[1], 1);
+	}
+	else
+		pipe(info->one_fd);
 	while(get_next_line(0, &line) > 0)
 	{
 		if (!ft_strncmp(line, info->end, ft_strlen(info->end)))
 			break ;
 		ft_putstr_fd(line, info->one_fd[1]);
+		ft_putstr_fd("\n", info->one_fd[1]);
 		free(line);
 		line = NULL;
 	}

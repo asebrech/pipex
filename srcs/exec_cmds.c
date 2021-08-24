@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 10:04:12 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/23 11:12:07 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/24 13:12:53 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	exec_cmds(t_info *info)
 	pid_t pid;
 
 	i = 0;
+	if (info->nb_arg == 0)
+		info->nb_arg = 1;
 	while (i < info->nb_arg)
 	{
 		pid = fork();
