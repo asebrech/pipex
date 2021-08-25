@@ -6,7 +6,7 @@
 /*   By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 10:04:12 by asebrech          #+#    #+#             */
-/*   Updated: 2021/08/24 13:12:53 by asebrech         ###   ########.fr       */
+/*   Updated: 2021/08/25 08:42:04 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	last_pipe(t_info *info)
 
 void	first_pipe(t_info *info)
 {
-	int fd;
+	int	fd;
 
 	if (!(ft_strncmp("here_doc", info->file1, ft_strlen(info->file1))))
 	{
@@ -36,6 +36,8 @@ void	first_pipe(t_info *info)
 	}
 	else
 	{
+		if (access(info->file1, R_OK) == -1)
+			perror("file1");
 		fd = open(info->file1, O_RDONLY);
 		dup2(fd, 0);
 		close(fd);
@@ -54,20 +56,20 @@ void	ft_pipe(t_info *info, int i)
 
 void	exec(t_info *info, int i)
 {
-	int	j;
-	int	k;
+	int		j;
+	int		k;
 	char	**tmp;
 	char	*tmp2;
 	char	*tmp3;
 
 	j = 0;
 	k = i * info->nb_path;
-	while(j < info->nb_path)
+	while (j < info->nb_path)
 	{
 		tmp = ft_split((info->arg)[i], ' ');
 		execve((info->cmds)[k + j], tmp, info->env);
 		if (j == info->nb_arg - 1)
-		free_tab(tmp);
+			free_tab(tmp);
 		j++;
 	}
 	tmp = ft_split((info->arg)[i], ' ');
@@ -77,12 +79,13 @@ void	exec(t_info *info, int i)
 	free(tmp2);
 	ft_putstr_fd(tmp3, 2);
 	free(tmp3);
+	exit(0);
 }
 
 void	exec_cmds(t_info *info)
 {
-	int	i;
-	pid_t pid;
+	int		i;
+	pid_t	pid;
 
 	i = 0;
 	if (info->nb_arg == 0)
@@ -104,5 +107,6 @@ void	exec_cmds(t_info *info)
 		i++;
 	}
 	ft_close_fd(info);
-	while(wait(NULL) > 0);
+	while (wait(NULL) > 0)
+		;
 }

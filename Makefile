@@ -6,7 +6,7 @@
 #    By: asebrech <asebrech@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 16:13:10 by asebrech          #+#    #+#              #
-#    Updated: 2021/08/20 10:25:17 by asebrech         ###   ########.fr        #
+#    Updated: 2021/08/25 08:53:03 by asebrech         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ NAME = pipex
 RM = rm -rf
 SRC =	srcs/pipex.c\
 		srcs/struct.c\
-		srcs/struct1.c\
 		srcs/utile.c\
 		srcs/exec_cmds.c\
 		get_next_line/get_next_line_utils.c\
@@ -25,7 +24,7 @@ SRC =	srcs/pipex.c\
 SRCB =
 
 ifdef WHITH_BONUS
-	OBJ = $(SRCB:.c=.o)
+	OBJ = $(SRC:.c=.o)
 else
 	OBJ = $(SRC:.c=.o)
 endif
